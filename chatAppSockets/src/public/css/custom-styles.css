@@ -1,0 +1,34 @@
+.container {
+    min-width: 400px !important;
+    max-width: 40% !important;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#chat {
+    height: 200px;
+    resize: none;
+    padding: 5px;
+    border: 1px solid gray;
+    background-color: black;
+    color: white;
+    overflow-y: scroll;
+}
+
+#escribiendo {
+    height: 10px;
+}
+
+#usuario {
+    width: 50%;
+}
+
+p {
+    margin-bottom: 0 !important;
+}
+
+#broadcast,
+#aviso,
+#mensaje {
+    display: none;
+}

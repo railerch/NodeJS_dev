@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=7">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/fontello.css">
+    <link rel="stylesheet" href="/css/custom-style.css">
+    <title>CRUD MongoDB</title>
+</head>
+
+<body>
+    <div class="container py-3">
+        <h1><i class="icon-users"></i> Personas registradas MongoDB</h1>
+        <hr>
+        <table id="personas" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>hash</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Cedula</th>
+                    <th>Teléfono</th>
+                    <th>Correo</th>
+                    <th>Dirección</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% personas.forEach (res => { %>
+                    <tr id="<%= res.id %>">
+                        <td class="id">
+                            <%= res.id%>
+                        </td>
+                        <td class="nombre" contenteditable="true">
+                            <%= res.nombre%>
+                        </td>
+                        <td class="apellido" contenteditable="true">
+                            <%= res.apellido%>
+                        </td>
+                        <td class="cedula" contenteditable="true">
+                            <%= res.cedula%>
+                        </td>
+                        <td class="telefono" contenteditable="true">
+                            <%= res.telefono%>
+                        </td>
+                        <td class="correo" contenteditable="true">
+                            <%= res.correo%>
+                        </td>
+                        <td class="direccion" contenteditable="true">
+                            <%= res.direccion%>
+                        </td>
+                        <td>
+                            <a class="btn btn-success actualizar-registro" href="#" data-id="<%= res.id %>" title="Actualizar">
+                                <i class="icon-arrows-cw"></i>
+                            </a>
+                            <a class="btn btn-danger eliminar-registro" href="#" data-id="<%= res.id %>" title="Eliminar" data-bs-toggle="modal" data-bs-target="#eliminar-registro-modal">
+                                <i class="icon-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <% }) %>
+            </tbody>
+        </table>
+        <hr>
+        <button id="nuevo-registro" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#nuevo-registro-modal"><i class="icon-user-plus"></i> Agregar registro</button>
+
+        <!-- Modal Nuevo registro-->
+        <div class="modal fade" id="nuevo-registro-modal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form action="/registrar" method="post">
+                        <div class="modal-header">
+                            <h5 class="modal-title"><i class="icon-user-plus"></i> Nuevo registro</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="mb-3 d-flex">
+                                <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre">
+                                <input type="text" name="apellido" id="apellido" class="form-control" placeholder="Apellido">
+                            </div>
+                            <div class="mb-3 d-flex">
+                                <input type="number" name="cedula" id="cedula" class="form-control" placeholder="Cedula">
+                                <input type="text" name="telefono" id="telefono" class="form-control" placeholder="Telefono">
+                            </div>
+                            <div class="mb-3">
+                                <input type="text" name="correo" id="correo" class="form-control" placeholder="Correo">
+                            </div>
+                            <div class="mb-3">
+                                <input type="text" name="direccion" id="direccion" class="form-control" placeholder="Direccion">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success" data-bs-dismiss="modal">Cancelar</button>
+                            <button id="nuevo-registro-continuar" type="submit" class="btn btn-danger">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Limpiar tabla-->
+        <div class="modal fade" id="limpiar-tabla-modal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title"><i class="icon-trash"></i> Eliminar datos de la tabla</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Esta acción eliminara todos los registros de la tabla actual, desea continuar?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Cancelar</button>
+                        <button id="limpiar-tabla-continuar" type="button" class="btn btn-danger">Continuar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal eliminar persona-->
+        <div class="modal fade" id="eliminar-registro-modal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title"> <i class="icon-user-times"></i> Eliminar registro</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Esta acción eliminara el registro seleccionado de la tabla actual, desea continuar?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Cancelar</button>
+                        <button id="eliminar-registro-continuar" type="button" class="btn btn-danger">Continuar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Bootstrap -->
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+
+    <!-- Custom Script-->
+    <script type="text/javascript" src="/js/custom-script.js"></script>
+</body>
+
+</html>

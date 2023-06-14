@@ -1,0 +1,40 @@
+a {
+    text-decoration: none;
+}
+
+#toolbar {
+    background-color: #f2f2f2;
+    padding: 0.5em;
+    border-radius: 5px;
+}
+
+.color-btn {
+    height: 50px;
+    width: 50px;
+    border: 0;
+    border-radius: 50%;
+    border: 2px solid gray;
+    color: lightgray;
+}
+
+.color-btn:hover {
+    color: gray;
+}
+
+.color-btn:active {
+    color: lightgray;
+    border: 2px solid lightgray;
+}
+
+#toolbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+canvas {
+    margin: 1em auto;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    cursor: crosshair;
+}

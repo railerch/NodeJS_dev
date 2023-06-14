@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=7">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/css/custom-styles.css">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+
+    <!-- SOCKETS PASO # 4 => Agregar el script de socket.io a la pagina de inicio-->
+    <script src="/socket.io/socket.io.js" defer></script>
+    <script src="/js/app.js" defer></script>
+
+    <title>Chat APP</title>
+</head>
+
+<body>
+    <div class="container shadow my-5">
+        <div class="card">
+            <div class="card-body">
+                <h2 id="titulo-principal">Chat APP => Socket.io</h2>
+                <hr>
+                <div id="chat">
+                    <!-- MENSAJES DE CHAT -->
+                </div>
+                <div id="escribiendo"></div>
+                <hr>
+                <div class="mb-3">
+                    <input type="text" name="usuario" id="usuario" class="form-control mb-3" placeholder="Nombre de usuario">
+                    <button id="ingresar" class="btn btn-success">INGRESAR</button>
+                </div>
+                <div class="mb-3">
+                    <input type="text" name="mensaje" id="mensaje" class="form-control" placeholder="Escriba su mensaje y presione ENTER para enviar">
+                </div>
+                <hr>
+                <div id="broadcast" class="alert alert-primary" role="alert"></div>
+                <div id="aviso" class="alert alert-danger" role="alert"></div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

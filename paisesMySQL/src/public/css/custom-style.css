@@ -1,0 +1,25 @@
+.card {
+    width: 20% !important;
+}
+
+img {
+    width: 50% !important;
+}
+
+a {
+    text-decoration: none;
+}
+
+.pais-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.pais {
+    max-width: 25%;
+    padding: 10px;
+    margin: 1%;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+}

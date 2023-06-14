@@ -1,0 +1,26 @@
+{
+    "name": "dibujoappsockets",
+    "version": "1.0.0",
+    "description": "Aplicacion de dibujo multiusuario con el uso de web sockets",
+    "main": "index.js",
+    "scripts": {
+        "start": "nodemon src/index.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "dibujo",
+        "socket",
+        "app",
+        "colores"
+    ],
+    "author": "EDteam",
+    "license": "ISC",
+    "devDependencies": {
+        "nodemon": "^2.0.16"
+    },
+    "dependencies": {
+        "ejs": "^3.1.7",
+        "express": "^4.18.1",
+        "socket.io": "^4.5.0"
+    }
+}

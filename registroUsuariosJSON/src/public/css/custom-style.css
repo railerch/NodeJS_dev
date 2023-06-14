@@ -1,0 +1,40 @@
+/* ESTILOS PERSONALIZADOS */
+
+.container {
+    width: fit-content;
+    margin-top: 1em;
+    padding: 0.5em;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #00000050;
+}
+
+a {
+    text-decoration: none;
+}
+
+#indexContainer {
+    text-align: center;
+}
+
+#indexBanner {
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+table {
+    width: 100%;
+}
+
+.alert {
+    display: block;
+    width: 100%;
+    position: absolute;
+    top: 40%;
+    text-align: center;
+    margin: 1em auto;
+    display: none;
+}
+
+#imagenPerfil img {
+    width: 100%;
+}

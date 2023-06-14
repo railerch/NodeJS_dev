@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=7">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/fontello.css">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- JS -->
+    <script src="/js/popper.min.js" defer></script>
+    <script src="/js/bootstrap.min.js" defer></script>
+    <script src="/js/custom-script.js" defer></script>
+
+    <!-- SOCKET.IO -->
+    <script src="/socket.io/socket.io.js"></script>
+
+
+    <title>Drawing APP</title>
+</head>
+
+<body>
+    <div class="container py-3">
+        <h2>Drawing APP</h2>
+        <hr>
+        <div id="toolbar">
+            <button id="amarillo" class="color-btn toolbar-btn" data-btn="yellow"><i class="icon-brush"></i></button>
+            <button id="azul" class="color-btn toolbar-btn" data-btn="blue"><i class="icon-brush"></i></button>
+            <button id="rojo" class="color-btn toolbar-btn" data-btn="red"><i class="icon-brush"></i></button>
+            <button id="verde" class="color-btn toolbar-btn" data-btn="green"><i class="icon-brush"></i></button>
+            <button id="naranja" class="color-btn toolbar-btn" data-btn="orange"><i class="icon-brush"></i></button>
+            <button id="morado" class="color-btn toolbar-btn" data-btn="purple"><i class="icon-brush"></i></button>
+            <button id="negro" class="color-btn toolbar-btn" data-btn="black"><i class="icon-brush"></i></button>
+            <button id="blanco" class="color-btn toolbar-btn" data-btn="white"><i class="icon-brush"></i></button>
+            <button class="btn btn-primary toolbar-btn" data-btn="borrar"><i class="icon-eraser"></i></button>
+            <button class="btn btn-danger toolbar-btn" data-btn="limpiar"><i class="icon-trash"></i></button>
+        </div>
+        <hr>
+        <canvas id="canvas">
+            <!-- CANVAS -->
+        </canvas>
+        <hr>
+    </div>
+</body>
+
+</html>

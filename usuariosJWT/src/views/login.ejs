@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Login</title>
+    <!-- Required meta tags -->
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=7">
+
+    <!-- Bootstrap CSS v5.0.2 -->
+    <link rel="stylesheet" href="/css/bootstrap.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/custom-style.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/fontello.css" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <div class="container">
+        <div id="login-form" class="card">
+            <img class="card-img-top" src="holder.js/100x180/" alt="">
+            <div class="card-body">
+                <h4 class="card-title">Iniciar Sesión</h4>
+                <form action="/login" method="post">
+                    <div class="mb-3">
+                        <input type="text" name="usuario" id="usuario" class="form-control" placeholder="Nombre de usuario">
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" name="clave" id="clave" class="form-control" placeholder="Clave">
+                    </div>
+                    <div class="mb-3 text-center">
+                        <input class="btn btn-primary" type="submit" value="Entrar">
+                    </div>
+                    <div class="mb-3 text-center">
+                        <a href="/register"> <i class="icon-user-plus"></i> Registrarse</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="/js/popper.min.js" crossorigin="anonymous"></script>
+    <script src="/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <script src="/js/custom-script.js" crossorigin="anonymous"></script>
+
+    <!-- ELIMINAR TOKEN DE USUARIO -->
+    <script type="text/javascript">
+        sessionStorage.removeItem("token");
+    </script>
+</body>
+
+</html>

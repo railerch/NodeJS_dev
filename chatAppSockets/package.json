@@ -1,0 +1,26 @@
+{
+    "name": "chatapp",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "nodemon src/index.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "chat",
+        "client",
+        "server",
+        "app",
+        "clientServer"
+    ],
+    "author": "Railer Ch.",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.18.0",
+        "socket.io": "^4.5.0"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.15"
+    }
+}

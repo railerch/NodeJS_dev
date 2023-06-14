@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Login</title>
+    <!-- Required meta tags -->
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=7">
+
+    <!-- Bootstrap CSS v5.0.2 -->
+    <link rel="stylesheet" href="/css/bootstrap.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/custom-style.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/fontello.css" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <div class="container">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Cedula</th>
+                    <th>Email</th>
+                    <th>Usuario</th>
+                    <th> - </th>
+                </tr>
+            </thead>
+            <tbody>
+                <% users.forEach(user => { %>
+                    <tr>
+                        <td>
+                            <%= user._id %>
+                        </td>
+                        <td>
+                            <%= user.nombre %>
+                        </td>
+                        <td>
+                            <%= user.apellido %>
+                        </td>
+                        <td>
+                            <%= user.cedula %>
+                        </td>
+                        <td>
+                            <%= user.email %>
+                        </td>
+                        <td>
+                            <%= user.usuario %>
+                        </td>
+                        <td>
+                            <a class="btn btn-danger" href="/users/del/<%= user._id %>/<%= token %>">
+                                <i class="icon-trash"></i>
+                            </a>
+                        </td>
+
+                    </tr>
+                    <% }) %>
+            </tbody>
+        </table>
+        <hr>
+        <button id="salir" class="btn btn-primary">SALIR</button>
+
+    </div>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="/js/popper.min.js" crossorigin="anonymous"></script>
+    <script src="/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <script src="/js/custom-script.js" crossorigin="anonymous"></script>
+
+    <!-- GUARDAR TOKEN EN EL NAVEGADOR DEL USUARIO -->
+    <script type="text/javascript">
+        if (!sessionStorage.getItem("token")) {
+            sessionStorage.setItem("token", "<%= token %>");
+        }
+    </script>
+</body>
+
+</html>

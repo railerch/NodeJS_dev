@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=7">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paises</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/img/favicon.png" type="image/x-icon">
+
+    <!-- Bootstrap 5-->
+    <link rel="stylesheet" href="/css/bootstrap.css">
+
+    <!-- Fontello -->
+    <link rel="stylesheet" href="/css/fontello.css">
+
+    <!-- Custom CSS-->
+    <link rel="stylesheet" href="/css/custom-style.css">
+
+</head>
+
+<body>
+    <div class="container py-5">
+        <h1>Paises del mundo</h1>
+        <a class="btn btn-success" href="/#" data-bs-toggle="modal" data-bs-target="#agregar-pais"><b>Nuevo pais +</b></a>
+        <hr>
+        <div class="pais-group">
+            <% paises.forEach ( pais => { %>
+                <div class="pais">
+                    <div class="d-flex">
+                        <img class="pais-img-top" src="<%= pais.bandera%>" alt="Bandera país" id="bandera-img">
+                        <img class="pais-img-top" src="<%= pais.mapa%>" alt="Mapa país" id="mapa-img">
+                    </div>
+                    <div class="pais-body">
+                        <h4 class="pais-title">
+                            <%= pais.nombre %>
+                        </h4>
+                        <p class="pais-text">
+                            <%= pais.ubicacion %>
+                        </p>
+                        <hr>
+
+                        <p>
+                            <%= pais.descripcion %>
+                        </p>
+                        <a class="editar-pais" href="#" style="float: right;" data-id="<%= pais.id %>" data-bs-toggle="modal" data-bs-target="#editar-pais-modal">
+                            <i class="icon-edit"></i>
+                        </a>
+                        <a class="eliminar-pais" href="#" style="float: right;" data-id="<%= pais.id %>" data-bs-toggle="modal" data-bs-target="#eliminar-pais-modal">
+                            <i class="icon-trash"></i>
+                        </a>
+                    </div>
+                </div>
+                <% })%>
+
+        </div>
+
+        <!-- Modal Agregar Pais -->
+        <div class="modal fade" id="agregar-pais" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form action="/crear" method="post" enctype="multipart/form-data">
+                        <div class="modal-header">
+                            <h3 class="modal-title">Nuevo Pais</h3>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+
+                            <div class="mb-3">
+                                <input type="text" class="form-control" name="nombre" id="nombre" aria-describedby="helpId" placeholder="País">
+                            </div>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" name="ubicacion" id="ubicacion" aria-describedby="helpId" placeholder="Ubicación">
+                            </div>
+                            <div class="mb-3">
+                                <textarea class="form-control" name="descripcion" id="descripcion" rows="3" placeholder="Descripción"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="bandera" class="form-label">Bandera</label>
+                                <input type="file" class="form-control" name="bandera" id="bandera" accept=".png, .jpg">
+                            </div>
+                            <div class="mb-3">
+                                <label for="mapa" class="form-label">Mapa</label>
+                                <input type="file" class="form-control" name="mapa" id="mapa" accept=".png, .jpg">
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <input class="btn btn-success" type="submit" value="GUARDAR">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Editar Pais -->
+        <div class="modal fade" id="editar-pais-modal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form id="actualizar-pais" action="/actualizar" method="post">
+                        <div class="modal-header">
+                            <h3 class="modal-title">Editar Pais</h3>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+
+                            <div class="mb-3">
+                                <input id="id-edit" type="hidden" name="id">
+                                <input type="text" class="form-control" name="nombre" id="nombre-edit" aria-describedby="helpId" placeholder="País">
+                            </div>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" name="ubicacion" id="ubicacion-edit" aria-describedby="helpId" placeholder="Ubicación">
+                            </div>
+                            <div class="mb-3">
+                                <textarea class="form-control" name="descripcion" id="descripcion-edit" rows="3" placeholder="Descripción"></textarea>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <input class="btn btn-success" type="submit" value="ACTUALIZAR">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Eliminar-->
+        <div class="modal fade" id="eliminar-pais-modal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Eliminar país</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Desea eliminar el país seleccionado?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <a id="eliminar-pais-modal-btn" href="#">
+                            <button type="button" class="btn btn-primary">Eliminar</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <!-- Bootstrap 5 -->
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+
+    <!-- Custom Script -->
+    <script type="text/javascript" src="/js/custom-scripts.js"></script>
+</body>
+
+</html>
